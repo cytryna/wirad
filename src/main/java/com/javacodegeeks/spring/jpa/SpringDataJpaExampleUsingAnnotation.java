@@ -41,6 +41,7 @@ public class SpringDataJpaExampleUsingAnnotation {
 	public static void main(String[] args) throws URISyntaxException, Exception {
 		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
 		try {
+			ctx.getEnvironment().setActiveProfiles("dev");
 			ctx.register(SpringDataJpaExampleUsingAnnotation.class);
 			ctx.refresh();
 			System.out.println("Load context");
