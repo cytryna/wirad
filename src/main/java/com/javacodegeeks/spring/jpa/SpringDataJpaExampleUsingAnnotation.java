@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.Profile;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -19,11 +20,14 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DataSourceUtils;
 import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.javacodegeeks.spring.repositories.EmployeeRepository;
 
 @Configuration("mainBean")
+//@Profile("dev")
+//@ActiveProfiles("dev")
 @EnableJpaRepositories(basePackages = "com.javacodegeeks.spring.repositories")
 @Import(JpaConfig.class)
 @Transactional

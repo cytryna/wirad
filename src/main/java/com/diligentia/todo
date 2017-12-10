@@ -35,3 +35,8 @@ webservis plus client na androida
 Budżet
 Kalendarz na lodówkę
 Jadłospis z exportem do kalendarza
+
+
+
+Problemy:
+1 Jak zaimplementować profile dla obiektu dataSource?
