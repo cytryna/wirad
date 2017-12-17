@@ -1,8 +1,6 @@
 package com.javacodegeeks.spring.jpa;
 
 import java.net.URISyntaxException;
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -12,24 +10,20 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.Profile;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.jdbc.datasource.DataSourceUtils;
-import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.javacodegeeks.spring.repositories.EmployeeRepository;
 
 @Configuration("mainBean")
-//@Profile("dev")
+@Profile("hsql")
 //@ActiveProfiles("dev")
 @EnableJpaRepositories(basePackages = "com.javacodegeeks.spring.repositories")
-@Import(JpaConfig.class)
+@Import(DataSourceConfig.class)
 @Transactional
 public class SpringDataJpaExampleUsingAnnotation {
 	@Autowired
@@ -41,7 +35,7 @@ public class SpringDataJpaExampleUsingAnnotation {
 	public static void main(String[] args) throws URISyntaxException, Exception {
 		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
 		try {
-			ctx.getEnvironment().setActiveProfiles("dev");
+			ctx.getEnvironment().setActiveProfiles("hsql");
 			ctx.register(SpringDataJpaExampleUsingAnnotation.class);
 			ctx.refresh();
 			System.out.println("Load context");

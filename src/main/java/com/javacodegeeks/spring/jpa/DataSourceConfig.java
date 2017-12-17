@@ -26,12 +26,12 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 //@Profile("dev")
-//@ActiveProfiles("dev")
+@ActiveProfiles("dev")
 @EnableTransactionManagement
-public class JpaConfig {
+public class DataSourceConfig {
 
 //	@Bean(destroyMethod = "shutdown")
-//	@Profile("dev")
+//	@Profile("h2")
 //	public DataSource embeddedDataSource() {
 //		EmbeddedDatabase build = new EmbeddedDatabaseBuilder()
 //				.setType(EmbeddedDatabaseType.H2)
@@ -54,7 +54,7 @@ public class JpaConfig {
 	 * Bootstraps an in-memory HSQL database.
 	 */
 	@Bean
-//	@Profile("dev")
+	@Profile("hsql")
 	public DataSource dataSource() {
 		EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
 		return builder.setType(EmbeddedDatabaseType.HSQL).build();
